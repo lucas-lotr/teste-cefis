@@ -5,11 +5,11 @@ class ContentView extends Component {
     id: "init"
   };
 
-  render() {
-    handleBack = () => {
-      window.location.search = "";
-    };
+  handleBack = () => {
+    window.location.search = "";
+  };
 
+  render() {
     return (
       <div>
         <p>ContentView {this.props.id}</p>
