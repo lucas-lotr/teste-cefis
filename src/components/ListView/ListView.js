@@ -1,10 +1,13 @@
 import React, { Component } from "react";
 import LoadIcon from "../LoadIcon/LoadIcon";
+import { Grid, Row } from "react-bootstrap";
+import ContentCard from "../ContentCard/ContentCard";
+import "./ListView.css";
 
 class ListView extends Component {
   state = {
     loaded: false,
-    db: {}
+    db: []
   };
 
   componentDidMount() {
@@ -13,6 +16,10 @@ class ListView extends Component {
       document.addEventListener("updateDB", this.updateDB);
       this.loadDB();
     }
+  }
+
+  componentWillMount() {
+    document.title = "Lista de Cursos";
   }
 
   componentWillUnmount() {
@@ -31,14 +38,7 @@ class ListView extends Component {
     var xhttp = new XMLHttpRequest();
     xhttp.onreadystatechange = function() {
       if (this.readyState === 4 && this.status === 200) {
-        // console.log(JSON.parse(this.responseText).data);
-        // updateDB(JSON.parse(this.responseText).data);
-        // this.state.db = JSON.parse(this.responseText).data
-        // this.stat
-        // this.setState()
         let response = JSON.parse(this.responseText).data;
-
-        // console.log("done");
 
         document.dispatchEvent(
           new CustomEvent("updateDB", {
@@ -56,17 +56,24 @@ class ListView extends Component {
   };
 
   render() {
+    const content = this.state.db.map(course => {
+      // console.log(course.id);
+      return (
+        <div key={course.id} className="card">
+          <ContentCard course={course} key={course.id} />
+        </div>
+      );
+    });
+
     console.log(this.state.db);
     if (this.state.loaded) {
       return (
         <div id="list-view">
           <p>ListView</p>
-          <button id="1" onClick={this.handleContentClick}>
-            id 1
-          </button>
-          <button id="2" onClick={this.handleContentClick}>
-            id 2
-          </button>
+
+          <br />
+
+          {content}
         </div>
       );
     } else {

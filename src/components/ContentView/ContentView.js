@@ -5,6 +5,10 @@ class ContentView extends Component {
     id: "init"
   };
 
+  componentWillMount() {
+    document.title = "ContentView";
+  }
+
   handleBack = () => {
     window.location.search = "";
   };
