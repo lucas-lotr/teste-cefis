@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import LoadIcon from "../LoadIcon/LoadIcon";
-import { Grid, Row } from "react-bootstrap";
 import ContentCard from "../ContentCard/ContentCard";
 import "./ListView.css";
 
 class ListView extends Component {
   state = {
     loaded: false,
-    db: []
+    db: [],
+    display: []
   };
 
   componentDidMount() {
@@ -30,6 +30,7 @@ class ListView extends Component {
     // console.log(data.detail);
     document.removeEventListener("updateDB", this.updateDB);
     this.state.db = data.detail;
+    this.state.display = data.detail;
     this.state.loaded = true;
     this.setState(this.state);
   };
@@ -56,7 +57,7 @@ class ListView extends Component {
   };
 
   render() {
-    const content = this.state.db.map(course => {
+    const content = this.state.display.map(course => {
       // console.log(course.id);
       return (
         <div key={course.id} className="card">
