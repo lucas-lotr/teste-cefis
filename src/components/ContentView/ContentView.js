@@ -65,6 +65,21 @@ class ContentView extends Component {
   render() {
     if (this.state.loaded) {
       const { course } = this.state;
+
+      console.log(course.classes.length);
+
+      var classes = "Não há aulas disponiveis para este curso.";
+
+      if (course.classes.length > 0) {
+        classes = course.classes.map(element => {
+          return <p key={element.id}>{element.title}</p>;
+        });
+      }
+
+      // const classes = course.classes.map(class => {});
+
+      // if (course.classes.length())
+
       return (
         <div>
           <button className="back" onClick={this.handleBack}>
@@ -85,6 +100,11 @@ class ContentView extends Component {
                 </Col>
               </Row>
             </Grid>
+            <br />
+            <div>
+              <h4>Aulas:</h4>
+              <div className="classes">{classes}</div>
+            </div>
           </div>
         </div>
       );
