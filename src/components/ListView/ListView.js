@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LoadIcon from "../LoadIcon/LoadIcon";
+import NavBar from "../NavBar/NavBar";
 import ContentCard from "../ContentCard/ContentCard";
 import "./ListView.css";
 
@@ -56,6 +57,20 @@ class ListView extends Component {
     window.location.search = `?id=${event.target.id}`;
   };
 
+  handleSelectChange = event => {
+    if (event.target.selectedIndex === 0) {
+      this.setState({ display: this.state.db });
+    } else {
+      let temp = [];
+      this.state.db.forEach(element => {
+        if (element.categories[0] === event.target.selectedIndex) {
+          temp.push(element);
+        }
+      });
+      this.setState({ display: temp });
+    }
+  };
+
   render() {
     const content = this.state.display.map(course => {
       // console.log(course.id);
@@ -69,16 +84,36 @@ class ListView extends Component {
     console.log(this.state.db);
     if (this.state.loaded) {
       return (
-        <div id="list-view">
-          <p>ListView</p>
-
+        <div>
+          <NavBar />
           <br />
-
-          {content}
+          <br />
+          <br />
+          <br />
+          <label className="category-selector-label" for="category-selector">
+            Categoria:
+            <select
+              id="category-selector"
+              defaultValue="Todas"
+              onChange={this.handleSelectChange}
+              className="category-selector"
+            >
+              <option>Todas</option>
+              <option>Fiscal</option>
+              <option>Contábil</option>
+              <option>Trabalhista</option>
+            </select>
+          </label>
+          <div id="list-view">{content}</div>
         </div>
       );
     } else {
-      return <LoadIcon />;
+      return (
+        <div>
+          <NavBar />
+          <LoadIcon />
+        </div>
+      );
     }
   }
 }

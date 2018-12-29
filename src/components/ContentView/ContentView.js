@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import LoadIcon from "../LoadIcon/LoadIcon";
+import NavBar from "../NavBar/NavBar";
 import { Grid, Row, Col } from "react-bootstrap";
 import "./ContentView.css";
 
@@ -24,10 +25,6 @@ class ContentView extends Component {
   componentWillUnmount() {
     document.removeEventListener("updateDB", this.updateDB);
   }
-
-  handleBack = () => {
-    window.location.search = "";
-  };
 
   updateDB = data => {
     // console.log(data.detail);
@@ -82,34 +79,41 @@ class ContentView extends Component {
 
       return (
         <div>
-          <button className="back" onClick={this.handleBack}>
-            Voltar
-          </button>
-          <div className="course">
-            <h3 className="course-title">{course.title}</h3>
+          <NavBar />
+          <div>
             <br />
-            <Grid fluid={true}>
-              <Row>
-                <Col lg={4}>
-                  <h4 className="course-subtitle">Objetivo:</h4>
-                  <p className="course-description">{course.goal}</p>
-                </Col>
-                <Col lg={8}>
-                  <h4 className="course-subtitle">Descrição:</h4>
-                  <p className="course-description">{course.resume}</p>
-                </Col>
-              </Row>
-            </Grid>
             <br />
-            <div>
-              <h4>Aulas:</h4>
-              <div className="classes">{classes}</div>
+            <div className="course">
+              <h3 className="course-title">{course.title}</h3>
+              <br />
+              <Grid fluid={true}>
+                <Row>
+                  <Col lg={4}>
+                    <h4 className="course-subtitle">Objetivo:</h4>
+                    <p className="course-description">{course.goal}</p>
+                  </Col>
+                  <Col lg={8}>
+                    <h4 className="course-subtitle">Descrição:</h4>
+                    <p className="course-description">{course.resume}</p>
+                  </Col>
+                </Row>
+              </Grid>
+              <br />
+              <div>
+                <h4>Aulas:</h4>
+                <div className="classes">{classes}</div>
+              </div>
             </div>
           </div>
         </div>
       );
     } else {
-      return <LoadIcon />;
+      return (
+        <div>
+          <NavBar />
+          <LoadIcon />
+        </div>
+      );
     }
   }
 }

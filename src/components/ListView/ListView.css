@@ -7,3 +7,17 @@
   margin-left: 50px;
   margin-right: 50px;
 }
+
+.category-selector {
+  margin-right: 50px;
+  margin-left: 5px;
+  /* margin-bottom: 50px; */
+  position: relative;
+}
+
+.category-selector-label {
+  margin-right: 50px;
+  /* margin-bottom: 50px; */
+  position: relative;
+  transform: translateX(80vw);
+}
