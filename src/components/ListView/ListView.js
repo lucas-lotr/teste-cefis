@@ -104,7 +104,9 @@ class ListView extends Component {
               <option>Trabalhista</option>
             </select>
           </label>
-          <div id="list-view">{content}</div>
+          <div className="container">
+            <div id="list-view">{content}</div>
+          </div>
         </div>
       );
     } else {

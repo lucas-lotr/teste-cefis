@@ -8,6 +8,13 @@
   margin-right: 50px;
 }
 
+.container {
+  padding: 0;
+  margin: 0;
+  margin-bottom: 100px;
+  width: 100%;
+}
+
 .category-selector {
   margin-right: 50px;
   margin-left: 5px;
