@@ -59,6 +59,14 @@ class ContentView extends Component {
     xhttp.send();
   };
 
+  capitalizeFirstLetter = string => {
+    const temp = string.split(" ").map(word => {
+      return word[0].toUpperCase() + word.slice(1).toLowerCase();
+    });
+
+    return temp.join(" ");
+  };
+
   render() {
     if (this.state.loaded) {
       const { course } = this.state;
@@ -72,6 +80,8 @@ class ContentView extends Component {
           return <p key={element.id}>{element.title}</p>;
         });
       }
+
+      const teacher = this.capitalizeFirstLetter(course.teachers_names);
 
       // const classes = course.classes.map(class => {});
 
@@ -98,6 +108,12 @@ class ContentView extends Component {
                   </Col>
                 </Row>
               </Grid>
+              <br />
+
+              <div>
+                <h4>Professor:</h4>
+                <p className="teacher">{teacher}</p>
+              </div>
               <br />
               <div>
                 <h4>Aulas:</h4>

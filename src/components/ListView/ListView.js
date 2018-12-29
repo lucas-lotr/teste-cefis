@@ -82,6 +82,7 @@ class ListView extends Component {
     });
 
     console.log(this.state.db);
+
     if (this.state.loaded) {
       return (
         <div>
@@ -90,7 +91,10 @@ class ListView extends Component {
           <br />
           <br />
           <br />
-          <label className="category-selector-label" for="category-selector">
+          <label
+            className="category-selector-label"
+            htmlFor="category-selector"
+          >
             Categoria:
             <select
               id="category-selector"
