@@ -1,10 +1,11 @@
 import React, { Component } from "react";
+import "./LoadIcon.css";
 
 class LoadIcon extends Component {
   render() {
     return (
-      <div>
-        <p>LOADING...</p>
+      <div id="loading">
+        <div id="load-icon" />
       </div>
     );
   }
