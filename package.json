@@ -2,6 +2,7 @@
   "name": "teste-cefis",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://lucas-lotr.github.io/teste-cefis",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "react": "^16.7.0",
