@@ -28,3 +28,13 @@
   position: relative;
   transform: translateX(80vw);
 }
+
+@media only screen and (max-width: 768px) {
+  #list-view {
+    margin-left: 5px;
+    margin-right: 5px;
+  }
+  .category-selector-label {
+    transform: translateX(0vw);
+  }
+}

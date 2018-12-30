@@ -3,6 +3,7 @@
 }
 
 .course {
+  border-radius: 5px;
   padding-left: 50px;
   padding-right: 50px;
   padding-top: 20px;
@@ -18,4 +19,25 @@
 
 .teacher {
   margin-left: 20px;
+}
+
+@media only screen and (max-width: 768px) {
+  .course {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+
+  .course h4 {
+    font-size: 80%;
+  }
+
+  .course h3 {
+    font-size: 80%;
+  }
+
+  .course p {
+    font-size: 80%;
+  }
 }
